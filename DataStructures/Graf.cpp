@@ -1,4 +1,5 @@
 #include "Graf.h"
+#include "math.h"
 
 
 void Graph::populateGraph_nodes(Graph& graph, const string& filename) {
@@ -23,31 +24,150 @@ void Graph::populateGraph_nodes(Graph& graph, const string& filename) {
     inputFile.close();
 }
 
+int Graph::countNodes(string& filename){
+    unordered_set<int> aux_nodes;
+    ifstream inputFile(filename);
+    if (!inputFile) {
+        cerr << "Error opening file: " << filename << endl;
+        return -1;
+    }
+
+    string nodeA;
+    string nodeB;
+    string dist;
+    int nA;
+    int nB;
+
+    string line;
+    getline(inputFile, line);
+
+    while (getline(inputFile, line)) {
+
+        stringstream inputString(line);
+
+        getline(inputString, nodeA, ',');
+        getline(inputString, nodeB, ',');
+        getline(inputString, dist, ',');
+
+        nA = atoi(nodeA.c_str());
+        nB = atoi(nodeB.c_str());
+
+        aux_nodes.insert(nA);
+        aux_nodes.insert(nB);
+    }
+
+    return aux_nodes.size();
+
+}
+
+void Graph::populateToyNodes(const string& filename, int n){
+
+    float dists[n][n];
+
+    for (int i = 0; i < n; i++){
+        for (int ii = 0; ii < n; ii++){
+            dists[i][ii] = 5000;
+        }
+    }
+
+
+
+    ifstream inputFile(filename);
+    if (!inputFile) {
+        cerr << "Error opening file: " << filename << endl;
+    }
+    string nodeA;
+    string nodeB;
+    string dist;
+    float distance;
+    int nA;
+    int nB;
+
+
+    string line;
+    getline(inputFile, line); //livrar a primeira linha que é só as designaçoes
+
+
+    while (getline(inputFile, line)) {
+
+        stringstream inputString(line);
+
+        getline(inputString, nodeA, ',');
+        getline(inputString, nodeB, ',');
+        getline(inputString, dist, ',');
+
+        distance = atof(dist.c_str());
+        nA = atoi(nodeA.c_str());
+        nB = atoi(nodeB.c_str());
+
+
+        dists[nA][nB] = distance;
+        dists[nB][nA] = distance;
+    }
+
+    for (int i = 0; i < n; i++){
+        for (int  ii = 0; ii < n; ii++){
+            cout << dists[i][ii] << " - ";
+        }
+        cout << endl;
+    }
+    inputFile.close();
+
+
+    auto **ptr = new const float*[n];
+    for (unsigned int i = 0; i < n; i++)
+        ptr[i] = dists[i];
+    unsigned int path[n];
+
+
+    float answer = tspBT(ptr, n, path);
+
+    cout << answer << endl;
+
+    for (int i = 0; i < 20; i++){
+        cout << path[i] << " - ";
+    }
+
+
+}
+
 void Graph::populateGraph_edges(Graph& graph, const string& filename) {
     ifstream inputFile(filename);
     if (!inputFile) {
         cerr << "Error opening file: " << filename << endl;
         return;
     }
+    string nodeA;
+    string nodeB;
+    string dist;
+    float distance;
+    int nA;
+    int nB;
 
     string line;
+    getline(inputFile, line); //livrar a primeira linha que é só as designaçoes
+
+
     while (getline(inputFile, line)) {
-        istringstream iss(line);
-        int origin, destination;
-        double distance;
-        if (!(iss >> origin >> destination >> distance)) {
-            cerr << "Error parsing line: " << line << endl;
-            continue;
-        }
 
-        graph.addEdge(origin, destination, distance);
+        stringstream inputString(line);
+
+        getline(inputString, nodeA, ',');
+        getline(inputString, nodeB, ',');
+        getline(inputString, dist, ',');
+
+        distance = atof(dist.c_str());
+        nA = atoi(nodeA.c_str());
+        nB = atoi(nodeB.c_str());
+
+        graph.addEdge(nA, nB, distance);
     }
-
-    inputFile.close();
+     inputFile.close();
 }
 
 void Graph::addNode(int nodeId, double longitude, double latitude) {
     Node node;
+    node.id = nodeId;
     node.longitude = longitude;
     node.latitude = latitude;
     nodes[nodeId] = node;

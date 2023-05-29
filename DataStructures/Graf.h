@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include "../src/tsp.h"
 
 
 using namespace std;
@@ -14,6 +15,7 @@ using namespace std;
 #define DA_TP_CLASSES_GRAF
 
 struct Node {
+    int id;
     double longitude;
     double latitude;
 };
@@ -21,9 +23,11 @@ struct Node {
 class Graph {
 public:
 
-    void populateGraph_nodes(Graph& graph, const string& filename);
+    static void populateGraph_nodes(Graph& graph, const string& filename);
 
-    void populateGraph_edges(Graph& graph, const string& filename);
+    static void populateGraph_edges(Graph& graph, const string& filename);
+
+    static void populateToyNodes(const string& filename, int n);
 
     void addNode(int nodeId, double longitude, double latitude);
 
@@ -36,6 +40,9 @@ public:
     vector<int> getNeighbors(int nodeId);
 
     vector<int> getNodes();
+
+    static int countNodes(string& filename);
+
 
 private:
     struct Edge {

@@ -1,6 +1,6 @@
 #include "tsp.h"
 
-void tspBTRec(const unsigned int **dists, unsigned int n, unsigned int curIndex, unsigned int curDist, unsigned int curPath[], unsigned int &minDist, unsigned int path[]) {
+void tspBTRec(const float **dists, unsigned int n, unsigned int curIndex, float curDist, unsigned int curPath[], float &minDist, unsigned int path[]) {
     if(curIndex == n) {
         // add the distance back to the initial node
         curDist += dists[curPath[n - 1]][curPath[0]];
@@ -31,13 +31,13 @@ void tspBTRec(const unsigned int **dists, unsigned int n, unsigned int curIndex,
     }
 }
 
-unsigned int tspBT(const unsigned int **dists, unsigned int n, unsigned int path[]) {
+unsigned int tspBT(const float **dists, unsigned int n, unsigned int path[]) {
     unsigned int curPath[10000]; // static memory allocation is faster :)
-    unsigned int minDist = std::numeric_limits<unsigned int>::max();
+    float minDist = 1000000;
 
     // Assumes path starts at node 0 ...
     curPath[0] = 0;
     // ... so in the first recursive call curIndex starts at 1 rather than 0
-    tspBTRec(dists, n, 1, 0, curPath, minDist, path);
+    tspBTRec(dists, n, 1, 0.0, curPath, minDist, path);
     return minDist;
 }

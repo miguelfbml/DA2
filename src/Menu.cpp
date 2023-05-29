@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Menu.h"
+#include "Graf.h"
 
 
 using namespace std;
@@ -18,6 +19,7 @@ void Menu::menuSeparator() {
 
 
 void Menu::runMenu() {
+    Graph *graph = new Graph();
     int option;
 
 
@@ -29,9 +31,9 @@ void Menu::runMenu() {
         cout << "" << endl <<
              endl;
 
-        cout << "                                                               [0]" <<
+        cout << "exit                                                             [0]" <<
              endl;
-        cout << "                                [1]" <<
+        cout << "TSP for toygraph                                                 [1]" <<
              endl;
         cout << "          [2]" <<
              endl;
@@ -58,7 +60,38 @@ void Menu::runMenu() {
             exit(0);
 
         } else if (option == 1) {
-            
+            int option2;
+            while (true) {
+                menuSeparator();
+                cout << "shipping           [1]" <<
+                     endl;
+                cout << "stadiums           [2]" <<
+                     endl;
+                cout << "tourism            [3]" <<
+                    endl;
+
+                cout << "Choose a file" << endl;
+                cin >> option2;
+
+                if (option2 == 1){
+
+
+                    string file = "../Data/Toy-Graphs/Toy-Graphs/shipping.csv";
+                    int n = Graph::countNodes(file);
+
+
+                    Graph::populateToyNodes(file, n);
+
+
+
+                }
+
+
+
+
+
+            }
+
 
 
         } else if (option == 2) {
