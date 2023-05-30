@@ -1,6 +1,7 @@
 #include "Graf.h"
 #include "math.h"
-
+//#include "ctime"
+#include <chrono>
 
 void Graph::populateGraph_nodes(Graph& graph, const string& filename) {
     ifstream inputFile(filename);
@@ -120,13 +121,26 @@ void Graph::populateToyNodes(const string& filename, int n){
     unsigned int path[n];
 
 
+    auto start = std::chrono::high_resolution_clock::now();
+
     float answer = tspBT(ptr, n, path);
 
-    cout << answer << endl;
+    auto end = std::chrono::high_resolution_clock::now();
 
-    for (int i = 0; i < 20; i++){
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+
+
+
+
+    cout << answer << endl;
+    cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
+
+    for (int i = 0; i < n; i++){
         cout << path[i] << " - ";
     }
+
+    cout << "0" << endl;
 
 
 }

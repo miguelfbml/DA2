@@ -75,7 +75,7 @@ void Menu::runMenu() {
 
                 if (option2 == 1){
 
-                    string file = "../Data/a/shipping.csv";
+                    string file = "../Data/Toy-Graphs/shipping.csv";
                     int n = Graph::countNodes(file);
 
                     Graph::populateToyNodes(file, n);
@@ -84,7 +84,7 @@ void Menu::runMenu() {
 
                 if (option2 == 2){
 
-                    string file = "../Data/a/stadiums.csv";
+                    string file = "../Data/Toy-Graphs/stadiums.csv";
                     int n = Graph::countNodes(file);
 
                     Graph::populateToyNodes(file, n);
@@ -93,7 +93,7 @@ void Menu::runMenu() {
 
                 if (option2 == 3){
 
-                    string file = "../Data/a/tourism.csv";
+                    string file = "../Data/Toy-Graphs/tourism.csv";
                     int n = Graph::countNodes(file);
 
                     Graph::populateToyNodes(file, n);

@@ -31,7 +31,7 @@ void tspBTRec(const float **dists, unsigned int n, unsigned int curIndex, float 
     }
 }
 
-unsigned int tspBT(const float **dists, unsigned int n, unsigned int path[]) {
+float tspBT(const float **dists, unsigned int n, unsigned int path[]) {
     unsigned int curPath[10000]; // static memory allocation is faster :)
     float minDist = 1000000;
 
