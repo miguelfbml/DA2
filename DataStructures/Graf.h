@@ -43,6 +43,10 @@ public:
 
     static int countNodes(string& filename);
 
+    std::vector<int> tspTriangularApproximation(vector<vector<double>> aux);
+
+    vector<vector<double>> createAdjacencyMatrix();
+
 
 private:
     struct Edge {

@@ -233,3 +233,43 @@ double Graph::haversineDistance(double lat1, double lon1, double lat2, double lo
 double Graph::degreesToRadians(double degrees) {
     return degrees * (M_PI / 180.0);
 }
+
+vector<vector<double>> Graph::createAdjacencyMatrix() {
+    int numNodes = nodes.size();
+    vector<vector<double>> adjacencyMatrix(numNodes, vector<double>(numNodes, 0.0));
+
+    for (const auto& edge : edges) {
+        adjacencyMatrix[edge.origin][edge.destination] = calculateDistance(edge.origin, edge.destination);
+        adjacencyMatrix[edge.destination][edge.origin] = adjacencyMatrix[edge.origin][edge.destination];
+    }
+
+    return adjacencyMatrix;
+}
+
+std::vector<int> Graph::tspTriangularApproximation(vector<vector<double>> aux) {
+    std::vector<int> tour;
+    std::unordered_set<int> visited;
+    tour.push_back(0);  // Start with node 0
+    visited.insert(0);
+
+    while (visited.size() < getNumNodes()) {
+        int current = tour.back();
+        double minDistance = std::numeric_limits<double>::max();
+        int nearestNeighbor = -1;
+
+        for (int neighbor = 0; neighbor < getNumNodes(); ++neighbor) {
+            if (visited.count(neighbor) == 0 && aux[current][neighbor] < minDistance) {
+                minDistance = aux[current][neighbor];
+                nearestNeighbor = neighbor;
+            }
+        }
+
+        if (nearestNeighbor != -1) {
+            tour.push_back(nearestNeighbor);
+            visited.insert(nearestNeighbor);
+        }
+    }
+
+    tour.push_back(0);  // Complete the cycle by adding the starting node to the end
+    return tour;
+}
