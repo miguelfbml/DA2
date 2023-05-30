@@ -75,19 +75,30 @@ void Menu::runMenu() {
 
                 if (option2 == 1){
 
-
-                    string file = "../Data/Toy-Graphs/Toy-Graphs/shipping.csv";
+                    string file = "../Data/a/shipping.csv";
                     int n = Graph::countNodes(file);
-
 
                     Graph::populateToyNodes(file, n);
 
+                }
 
+                if (option2 == 2){
+
+                    string file = "../Data/a/stadiums.csv";
+                    int n = Graph::countNodes(file);
+
+                    Graph::populateToyNodes(file, n);
 
                 }
 
+                if (option2 == 3){
 
+                    string file = "../Data/a/tourism.csv";
+                    int n = Graph::countNodes(file);
 
+                    Graph::populateToyNodes(file, n);
+
+                }
 
 
             }
