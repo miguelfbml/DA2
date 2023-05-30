@@ -67,7 +67,7 @@ void Graph::populateToyNodes(const string& filename, int n){
 
     for (int i = 0; i < n; i++){
         for (int ii = 0; ii < n; ii++){
-            dists[i][ii] = 5000;
+            dists[i][ii] = 50000000;
         }
     }
 
