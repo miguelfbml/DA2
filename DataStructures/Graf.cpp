@@ -9,19 +9,32 @@ void Graph::populateGraph_nodes(Graph& graph, const string& filename) {
         cerr << "Error opening file: " << filename << endl;
         return;
     }
+    string nodeA;
+    string nodeB;
+    string dist;
+    float distance;
+    int nA;
+    float nB;
 
     string line;
+    getline(inputFile, line); //livrar a primeira linha que é só as designaçoes
+
+
     while (getline(inputFile, line)) {
-        istringstream iss(line);
-        int id, longitude, latitude;
-        if (!(iss >> id >> longitude >> latitude)) {
-            cerr << "Error parsing line: " << line << endl;
-            continue;
-        }
 
-        graph.addNode(id, longitude, latitude);
+        stringstream inputString(line);
+
+        getline(inputString, nodeA, ',');
+        getline(inputString, nodeB, ',');
+        getline(inputString, dist, ',');
+
+        distance = atof(dist.c_str());
+        nA = atoi(nodeA.c_str());
+        nB = atof(nodeB.c_str());
+
+
+        graph.addNode(nA, nB, distance);
     }
-
     inputFile.close();
 }
 
@@ -105,13 +118,14 @@ void Graph::populateToyNodes(const string& filename, int n){
         dists[nA][nB] = distance;
         dists[nB][nA] = distance;
     }
-
+    /*
     for (int i = 0; i < n; i++){
         for (int  ii = 0; ii < n; ii++){
             cout << dists[i][ii] << " - ";
         }
         cout << endl;
     }
+     */
     inputFile.close();
 
 
@@ -201,6 +215,10 @@ int Graph::getNumNodes() const {
     return nodes.size();
 }
 
+int Graph::getNumEdges() const {
+    return edges.size();
+}
+
 vector<int> Graph::getNeighbors(int nodeId) {
     vector<int> neighbors;
     for (const auto& edge : edges) {
@@ -246,7 +264,7 @@ vector<vector<double>> Graph::createAdjacencyMatrix() {
     return adjacencyMatrix;
 }
 
-std::vector<int> Graph::tspTriangularApproximation(vector<vector<double>> aux) {
+std::vector<int> Graph::tspTriangularApproximation(vector<vector<double>> aux, double &distfinal) {
     std::vector<int> tour;
     std::unordered_set<int> visited;
     tour.push_back(0);  // Start with node 0
@@ -265,6 +283,7 @@ std::vector<int> Graph::tspTriangularApproximation(vector<vector<double>> aux) {
         }
 
         if (nearestNeighbor != -1) {
+            distfinal += minDistance;
             tour.push_back(nearestNeighbor);
             visited.insert(nearestNeighbor);
         }

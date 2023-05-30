@@ -107,7 +107,7 @@ void Menu::runMenu() {
 
         } else if (option == 2) {
 
-            int option2;
+            int option3;
             while (true) {
                 menuSeparator();
                 cout << "shipping           [1]" <<
@@ -118,9 +118,9 @@ void Menu::runMenu() {
                      endl;
 
                 cout << "Choose a file" << endl;
-                cin >> option2;
+                cin >> option3;
 
-                if (option2 == 1){
+                if (option3 == 1){
 
                     string file = "../Data/Extra_Fully_Connected_Graphs/edges_25.csv";
                     int n = Graph::countNodes(file);
@@ -129,7 +129,7 @@ void Menu::runMenu() {
 
                 }
 
-                if (option2 == 2){
+                if (option3 == 2){
 
                     string file = "../Data/Toy-Graphs/stadiums.csv";
                     int n = Graph::countNodes(file);
@@ -138,7 +138,7 @@ void Menu::runMenu() {
 
                 }
 
-                if (option2 == 3){
+                if (option3 == 3){
 
                     string file = "../Data/Toy-Graphs/tourism.csv";
                     int n = Graph::countNodes(file);
@@ -179,16 +179,18 @@ void Menu::runMenu() {
                     graph->populateGraph_nodes(*graph, file_n);
                     graph->populateGraph_edges(*graph, file_e);
 
-                    int n = graph->getNumNodes();
                     vector<vector<double>> aux = graph->createAdjacencyMatrix();
 
-                    vector<int> final = graph->tspTriangularApproximation(aux);
+                    double distfinal = 0;
 
-                    for(auto a : final){
-                        cout << a << ' - ';
+                    vector<int> final = graph->tspTriangularApproximation(aux, distfinal);
+
+                    for(int a : final){
+                        cout << a << " - ";
                     }
                     cout << endl;
 
+                    cout << "Dist: " << distfinal << endl;
                 }
 
                 if (option2 == 2){
@@ -199,16 +201,19 @@ void Menu::runMenu() {
                     graph->populateGraph_nodes(*graph, file_n);
                     graph->populateGraph_edges(*graph, file_e);
 
-                    int n = graph->getNumNodes();
+
                     vector<vector<double>> aux = graph->createAdjacencyMatrix();
 
-                    vector<int> final = graph->tspTriangularApproximation(aux);
+                    double distfinal = 0;
+
+                    vector<int> final = graph->tspTriangularApproximation(aux , distfinal);
 
                     for(auto a : final){
-                        cout << a << ' - ';
+                        cout << a << " - " << endl;
                     }
                     cout << endl;
 
+                    cout << "Dist: " << distfinal << endl;
                 }
 
                 if (option2 == 3){
@@ -219,15 +224,18 @@ void Menu::runMenu() {
                     graph->populateGraph_nodes(*graph, file_n);
                     graph->populateGraph_edges(*graph, file_e);
 
-                    int n = graph->getNumNodes();
                     vector<vector<double>> aux = graph->createAdjacencyMatrix();
 
-                    vector<int> final = graph->tspTriangularApproximation(aux);
+                    double distfinal = 0;
+
+                    vector<int> final = graph->tspTriangularApproximation(aux , distfinal);
 
                     for(auto a : final){
-                        cout << a << ' - ';
+                        cout << a << " - " << endl;
                     }
                     cout << endl;
+
+                    cout << "Dist: " << distfinal << endl;
 
                 }
 
