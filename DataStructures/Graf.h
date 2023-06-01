@@ -43,9 +43,9 @@ public:
 
     static int countNodes(string& filename);
 
-    std::vector<int> tspTriangularApproximation(vector<vector<double>> aux, double &distfinal);
+    std::vector<int> tspTriangularApproximation(vector<vector<double>> aux, double &distfinal, int size = 0);
 
-    vector<vector<double>> createAdjacencyMatrix();
+    vector<vector<double>> createAdjacencyMatrix(bool flag = false, int size = 0);
 
     int getNumEdges() const;
 

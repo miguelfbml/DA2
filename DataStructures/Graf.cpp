@@ -118,14 +118,15 @@ void Graph::populateToyNodes(const string& filename, int n){
         dists[nA][nB] = distance;
         dists[nB][nA] = distance;
     }
-    /*
+
     for (int i = 0; i < n; i++){
         for (int  ii = 0; ii < n; ii++){
             cout << dists[i][ii] << " - ";
         }
+        cout << "( " << i << " )";
         cout << endl;
     }
-     */
+
     inputFile.close();
 
 
@@ -252,30 +253,58 @@ double Graph::degreesToRadians(double degrees) {
     return degrees * (M_PI / 180.0);
 }
 
-vector<vector<double>> Graph::createAdjacencyMatrix() {
-    int numNodes = nodes.size();
-    vector<vector<double>> adjacencyMatrix(numNodes, vector<double>(numNodes, 0.0));
+vector<vector<double>> Graph::createAdjacencyMatrix(bool flag, int size) {
+    int numNodes;
+    if(size == 0) numNodes = nodes.size();
+    else numNodes = size;
+    double maxnum = numeric_limits<double>::max();
+    vector<vector<double>> adjacencyMatrix(numNodes, vector<double>(numNodes, maxnum));
 
-    for (const auto& edge : edges) {
-        adjacencyMatrix[edge.origin][edge.destination] = calculateDistance(edge.origin, edge.destination);
-        adjacencyMatrix[edge.destination][edge.origin] = adjacencyMatrix[edge.origin][edge.destination];
+
+    for (int i = 0; i < numNodes; i++){
+        adjacencyMatrix[i][i] = 0.0;
     }
+
+    if(flag) {
+        for (const auto &edge: edges) {
+            adjacencyMatrix[edge.origin][edge.destination] = edge.distance;
+            adjacencyMatrix[edge.destination][edge.origin] = adjacencyMatrix[edge.origin][edge.destination];
+        }
+    }
+
+    else {
+        for (const auto &node: nodes) {
+            for (const auto &node1: nodes) {
+                if (node.first == node1.first) {
+                    continue;
+                }
+                adjacencyMatrix[node.first][node1.first] = calculateDistance(node.first, node1.first);
+
+                adjacencyMatrix[node1.first][node.first] = adjacencyMatrix[node.first][node1.first];
+            }
+        }
+    }
+
 
     return adjacencyMatrix;
 }
 
-std::vector<int> Graph::tspTriangularApproximation(vector<vector<double>> aux, double &distfinal) {
+std::vector<int> Graph::tspTriangularApproximation(vector<vector<double>> aux, double &distfinal, int size) {
     std::vector<int> tour;
     std::unordered_set<int> visited;
     tour.push_back(0);  // Start with node 0
     visited.insert(0);
 
-    while (visited.size() < getNumNodes()) {
+    int number;
+    if(size != 0) number = size;
+    else number = getNumNodes();
+
+    while (visited.size() < number) {
         int current = tour.back();
         double minDistance = std::numeric_limits<double>::max();
         int nearestNeighbor = -1;
 
-        for (int neighbor = 0; neighbor < getNumNodes(); ++neighbor) {
+        for (int neighbor = 0; neighbor < number; ++neighbor) {
             if (visited.count(neighbor) == 0 && aux[current][neighbor] < minDistance) {
                 minDistance = aux[current][neighbor];
                 nearestNeighbor = neighbor;
@@ -288,7 +317,7 @@ std::vector<int> Graph::tspTriangularApproximation(vector<vector<double>> aux, d
             visited.insert(nearestNeighbor);
         }
     }
-
+    distfinal += aux[tour.back()][0];
     tour.push_back(0);  // Complete the cycle by adding the starting node to the end
     return tour;
 }
