@@ -1,0 +1,12 @@
+# ninja log v5
+21	198	7074204175452662	CMakeFiles/DA2.dir/src/tsp.cpp.obj	f33d753aa0262b8a
+51	669	7074204180171046	CMakeFiles/DA2.dir/src/Readfiles.cpp.obj	56363406711ad449
+10	259	7074204176069373	CMakeFiles/DA2.dir/DataStructures/UFDS.cpp.obj	bbde29bc990535fe
+13	572	7074204179194697	CMakeFiles/DA2.dir/src/main.cpp.obj	e043508ab7311d3b
+0	364	7074204177121033	CMakeFiles/DA2.dir/DataStructures/Heap.cpp.obj	f6e5ad24a427920d
+26	741	7074204180855383	CMakeFiles/DA2.dir/src/Menu.cpp.obj	5579c4cba06b81c2
+17	709	7074204180574879	CMakeFiles/DA2.dir/DataStructures/VertexEdge.cpp.obj	b23492455325e0b9
+6	780	7074204181281398	CMakeFiles/DA2.dir/DataStructures/Graph.cpp.obj	b2a45bff4243b3c0
+55	836	7074204181835925	CMakeFiles/DA2.dir/DataStructures/TSP.cpp.obj	5c3b5da555dbe74c
+60	1156	7074204184930102	CMakeFiles/DA2.dir/DataStructures/Graf.cpp.obj	6f845dd4c50f1fd
+4	438	7074206556291576	CMakeFiles/DA2.dir/src/Menu.cpp.obj	5579c4cba06b81c2

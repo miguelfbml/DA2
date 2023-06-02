@@ -26,21 +26,18 @@ void Menu::runMenu() {
     while (true) {
         menuSeparator();
 
-        cout << "" << endl <<
+        cout << endl << endl;
+
+        cout << "Exit                                                             [0]" <<
              endl;
-        cout << "" << endl <<
+        cout << "Backtracking Algorithm                                           [1]" <<
+             endl;
+        cout << "Triangular Approximation Heuristic                               [2]" <<
+             endl;
+        cout << "Other Heuristics                                                 [3]" <<
              endl;
 
-        cout << "exit                                                             [0]" <<
-             endl;
-        cout << "TSP for toygraph                                                 [1]" <<
-             endl;
-        cout << "TSP for Extra Fully Connected Graphs                             [2]" <<
-             endl;
-        cout << "        [3]" <<
-             endl;
-
-        cout << "Insert the number correspondent to your option: ";
+        cout << endl << "Insert the number correspondent to your option: ";
         cin >> option;
 
 
@@ -49,242 +46,538 @@ void Menu::runMenu() {
         if (option == 0) {
             exit(0);
 
-        } else if (option == 1) {
+        }
+        else if (option == 1) {
             int option2;
             while (true) {
                 menuSeparator();
-                cout << "shipping           [1]" <<
+                cout << endl;
+                cout << "Toy Graphs                                                       [1]" <<
                      endl;
-                cout << "stadiums           [2]" <<
+                cout << "Real World Graphs                                                [2]" <<
                      endl;
-                cout << "tourism            [3]" <<
-                    endl;
+                cout << "Extra Fully Connected Graphs                                     [3]" <<
+                     endl;
 
-                cout << "Choose a file" << endl;
+                cout << endl << "Insert the number correspondent to your option: ";
                 cin >> option2;
+                cout << endl;
 
                 if (option2 == 1){
 
-                    string file = "../Data/Toy-Graphs/shipping.csv";
-                    int n = Graph::countNodes(file);
+                    int option3;
+                    while (true){
+                        menuSeparator();
+                        cout << endl;
+                        cout << "Shipping                                                         [1]" <<
+                             endl;
+                        cout << "Stadiums                                                         [2]" <<
+                             endl;
+                        cout << "Tourism                                                          [3]" <<
+                             endl;
 
-                    Graph::populateToyNodes(file, n);
+                        cout << endl << "Choose a file: ";
+                        cin >> option3;
+                        cout << endl;
+
+
+                        if (option3 == 1){
+                            string file = "../Data/Toy-Graphs/shipping.csv";
+                            int n = Graph::countNodes(file);
+
+                            Graph::populateToyNodes(file, n);
+                            break;
+                        }
+
+                        else if (option3 == 2){
+                            string file = "../Data/Toy-Graphs/stadiums.csv";
+                            int n = Graph::countNodes(file);
+
+                            Graph::populateToyNodes(file, n);
+                            break;
+                        }
+                        else if (option3 == 3){
+                            string file = "../Data/Toy-Graphs/tourism.csv";
+                            int n = Graph::countNodes(file);
+
+                            Graph::populateToyNodes(file, n);
+                            break;
+                        }
+                    }
 
                 }
+                else if (option2 == 2){
+                    int option3;
+                    while (true){
+                        menuSeparator();
+                        cout << endl;
+                        cout << "Graph 1                                                          [1]" <<
+                             endl;
+                        cout << "Graph 2                                                          [2]" <<
+                             endl;
+                        cout << "Graph 3                                                          [3]" <<
+                             endl;
 
-                if (option2 == 2){
+                        cout << endl << "Choose a file: ";
+                        cin >> option3;
+                        cout << endl;
 
-                    string file = "../Data/Toy-Graphs/stadiums.csv";
-                    int n = Graph::countNodes(file);
 
-                    Graph::populateToyNodes(file, n);
+                        if (option3 == 1){
+                            //chamar ficheiro e funcoes
 
+                            break;
+                        }
+
+                        else if (option3 == 2){
+                            //chamar ficheiro e funcoes
+
+                            break;
+                        }
+                        else if (option3 == 3){
+                            //chamar ficheiro e funcoes
+
+                            break;
+                        }
+                    }
                 }
 
-                if (option2 == 3){
+                else if (option2 == 3){
+                    int option3;
+                    while (true){
+                        menuSeparator();
+                        cout << endl;
+                        cout << "Edges 25                                                         [1]" <<
+                             endl;
+                        cout << "Edges 50                                                         [2]" <<
+                             endl;
+                        cout << "Edges 75                                                         [3]" <<
+                             endl;
 
-                    string file = "../Data/Toy-Graphs/tourism.csv";
-                    int n = Graph::countNodes(file);
+                        cout << endl << "Choose a file: ";
+                        cin >> option3;
+                        cout << endl;
 
-                    Graph::populateToyNodes(file, n);
 
+                        if (option3 == 1){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_25.csv";
+                            int n = Graph::countNodes(file);
+
+                            Graph::populateToyNodes(file, n);
+                            break;
+                        }
+
+                        else if (option3 == 2){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_50.csv";
+                            int n = Graph::countNodes(file);
+
+                            Graph::populateToyNodes(file, n);
+                            break;
+                        }
+                        else if (option3 == 3){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_100.csv";
+                            int n = Graph::countNodes(file);
+
+                            Graph::populateToyNodes(file, n);
+                            break;
+                        }
+                    }
                 }
+                break;
 
 
             }
 
+        }
+        else if (option == 2) {
 
-
-        } else if (option == 2) {
-
-            int option3;
-            while (true) {
-                menuSeparator();
-                cout << "shipping           [1]" <<
-                     endl;
-                cout << "stadiums           [2]" <<
-                     endl;
-                cout << "tourism            [3]" <<
-                     endl;
-
-                cout << "Choose a file" << endl;
-                cin >> option3;
-
-                if (option3 == 1){
-
-                    string file = "../Data/Extra_Fully_Connected_Graphs/edges_25.csv";
-                    int n = Graph::countNodes(file);
-
-                    Graph::populateToyNodes(file, n);
-
-
-                }
-
-                if (option3 == 2){
-
-                    string file = "../Data/Toy-Graphs/stadiums.csv";
-                    int n = Graph::countNodes(file);
-
-                    Graph::populateToyNodes(file, n);
-
-                }
-
-                if (option3 == 3){
-
-                    string file = "../Data/Toy-Graphs/tourism.csv";
-                    int n = Graph::countNodes(file);
-
-                    Graph::populateToyNodes(file, n);
-
-                }
-
-
-            }
-
-
-
-
-
-
-
-
-        } else if (option == 3) {
             int option2;
             while (true) {
                 menuSeparator();
-                cout << "shipping           [1]" <<
+                cout << endl;
+                cout << "Toy Graphs                                                       [1]" <<
                      endl;
-                cout << "stadiums           [2]" <<
+                cout << "Real World Graphs                                                [2]" <<
                      endl;
-                cout << "tourism            [3]" <<
+                cout << "Extra Fully Connected Graphs                                     [3]" <<
                      endl;
 
-                cout << "Choose a file" << endl;
+                cout << endl << "Insert the number correspondent to your option: ";
                 cin >> option2;
+                cout << endl;
 
                 if (option2 == 1){
 
-                    string file_e = "../Data/Real-world Graphs/graph1/edges.csv";
-                    string file_n = "../Data/Real-world Graphs/graph1/nodes.csv";
+                    int option3;
+                    while (true){
+                        menuSeparator();
+                        cout << endl;
+                        cout << "Shipping                                                         [1]" <<
+                             endl;
+                        cout << "Stadiums                                                         [2]" <<
+                             endl;
+                        cout << "Tourism                                                          [3]" <<
+                             endl;
 
-                    graph->populateGraph_nodes(*graph, file_n);
-                    graph->populateGraph_edges(*graph, file_e);
+                        cout << endl << "Choose a file: ";
+                        cin >> option3;
+                        cout << endl;
 
-                    vector<vector<double>> aux = graph->createAdjacencyMatrix(true);
 
-                    double distfinal = 0;
+                        if (option3 == 1){
+                            string file = "../Data/Toy-Graphs/shipping.csv";
 
-                    vector<int> final = graph->tspTriangularApproximation(aux, distfinal);
+                            //chamar funcao
 
-                    for(int a : final){
-                        cout << a << " - ";
+                            break;
+                        }
+
+                        else if (option3 == 2){
+                            string file = "../Data/Toy-Graphs/stadiums.csv";
+
+                            //chamar funcao
+
+                            break;
+                        }
+                        else if (option3 == 3){
+                            string file = "../Data/Toy-Graphs/tourism.csv";
+
+                            //chamar funcao
+
+                            break;
+                        }
                     }
-                    cout << endl;
-
-                    cout << "Dist: " << distfinal << "m" << endl;
-                }
-
-                if (option2 == 2){
-
-                    string file_e = "../Data/Real-world Graphs/graph2/edges.csv";
-                    string file_n = "../Data/Real-world Graphs/graph2/nodes.csv";
-
-                    graph->populateGraph_nodes(*graph, file_n);
-                    graph->populateGraph_edges(*graph, file_e);
-
-
-                    vector<vector<double>> aux = graph->createAdjacencyMatrix();
-
-                    double distfinal = 0;
-
-                    vector<int> final = graph->tspTriangularApproximation(aux , distfinal);
-
-                    for(auto a : final){
-                        cout << a << " - ";
-                    }
-                    cout << endl;
-
-                    cout << "Dist: " << distfinal << "km" << endl;
-                }
-
-                if (option2 == 3){
-
-                    string file_e = "../Data/Real-world Graphs/graph3/edges.csv";
-                    string file_n = "../Data/Real-world Graphs/graph3/nodes.csv";
-
-                    graph->populateGraph_nodes(*graph, file_n);
-                    graph->populateGraph_edges(*graph, file_e);
-
-
-
-                    vector<vector<double>> aux = graph->createAdjacencyMatrix();
-
-                    double distfinal = 0;
-
-                    vector<int> final = graph->tspTriangularApproximation(aux , distfinal);
-
-                    for(auto a : final){
-                        cout << a << " - ";
-                    }
-                    cout << endl;
-
-                    cout << "Dist: " << distfinal << "km" << endl;
 
                 }
+                else if (option2 == 2){
+                    int option3;
+                    while (true){
+                        menuSeparator();
+                        cout << endl;
+                        cout << "Graph 1                                                          [1]" <<
+                             endl;
+                        cout << "Graph 2                                                          [2]" <<
+                             endl;
+                        cout << "Graph 3                                                          [3]" <<
+                             endl;
+
+                        cout << endl << "Choose a file: ";
+                        cin >> option3;
+                        cout << endl;
+
+
+                        if (option3 == 1){
+                            string file_e = "../Data/Real-world Graphs/graph1/edges.csv";
+                            string file_n = "../Data/Real-world Graphs/graph1/nodes.csv";
+
+                            graph->populateGraph_nodes(*graph, file_n);
+                            graph->populateGraph_edges(*graph, file_e);
+
+                            vector<int> caminho = graph->tspHeuristic(*graph);
+
+                            for(auto a : caminho){
+                                cout << a << " - ";
+                            }
+                            cout << endl;
+
+                            break;
+                        }
+
+                        else if (option3 == 2){
+                            //chamar ficheiro e funcoes
+
+                            break;
+                        }
+                        else if (option3 == 3){
+                            //chamar ficheiro e funcoes
+
+                            break;
+                        }
+                    }
+
+                }
+
+                else if (option2 == 3){
+                    int option3;
+                    while (true){
+                        menuSeparator();
+                        cout << endl;
+                        cout << "Edges 25                                                         [1]" <<
+                             endl;
+                        cout << "Edges 50                                                         [2]" <<
+                             endl;
+                        cout << "Edges 75                                                         [3]" <<
+                             endl;
+
+                        cout << endl << "Choose a file: ";
+                        cin >> option3;
+                        cout << endl;
+
+
+                        if (option3 == 1){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_25.csv";
+
+                            //chamar funcao
+
+                            break;
+                        }
+
+                        else if (option3 == 2){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_50.csv";
+
+                            //chamar funcao
+
+                            break;
+                        }
+                        else if (option3 == 3){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_100.csv";
+
+                            //chamar funcao
+
+                            break;
+                        }
+
+                    }
+
+                }
+
+                break;
+
 
             }
-        } else if (option == 4) {
-            string file = "../Data/Toy-Graphs/tourism.csv";
-            graph->populateGraph_edges(*graph, file);
-            int n = Graph::countNodes(file);
-            double distfinal = 0;
-            vector<vector<double>> aux = graph->createAdjacencyMatrix(true, n);
 
-            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+        }
+        else if (option == 3) {
+            int option2;
+            while (true) {
+                menuSeparator();
+                cout << endl;
+                cout << "Toy Graphs                                                       [1]" <<
+                     endl;
+                cout << "Real World Graphs                                                [2]" <<
+                     endl;
+                cout << "Extra Fully Connected Graphs                                     [3]" <<
+                     endl;
 
-            for(auto a : final){
-                cout << a << " - ";
+                cout << endl << "Insert the number correspondent to your option: ";
+                cin >> option2;
+                cout << endl;
+
+                if (option2 == 1){
+
+                    int option3;
+                    while (true){
+                        menuSeparator();
+                        cout << endl;
+                        cout << "Shipping                                                         [1]" <<
+                             endl;
+                        cout << "Stadiums                                                         [2]" <<
+                             endl;
+                        cout << "Tourism                                                          [3]" <<
+                             endl;
+
+                        cout << endl << "Choose a file: ";
+                        cin >> option3;
+                        cout << endl;
+
+
+                        if (option3 == 1){
+                            string file = "../Data/Toy-Graphs/shipping.csv";
+
+                            graph->populateGraph_edges(*graph, file);
+                            int n = Graph::countNodes(file);
+                            double distfinal = 0;
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix(true, n);
+
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+
+                            for(auto a : final){
+                                cout << a << " - ";
+                            }
+                            cout << endl;
+
+                            cout << "Dist: " << distfinal << "m" << endl;
+
+                            break;
+                        }
+
+                        else if (option3 == 2){
+                            string file = "../Data/Toy-Graphs/stadiums.csv";
+
+                            graph->populateGraph_edges(*graph, file);
+                            int n = Graph::countNodes(file);
+                            double distfinal = 0;
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix(true, n);
+
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+
+                            for(auto a : final){
+                                cout << a << " - ";
+                            }
+                            cout << endl;
+
+                            cout << "Dist: " << distfinal << "m" << endl;
+
+                            break;
+                        }
+                        else if (option3 == 3){
+                            string file = "../Data/Toy-Graphs/tourism.csv";
+
+                            graph->populateGraph_edges(*graph, file);
+                            int n = Graph::countNodes(file);
+                            double distfinal = 0;
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix(true, n);
+
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+
+                            for(auto a : final){
+                                cout << a << " - ";
+                            }
+                            cout << endl;
+
+                            cout << "Dist: " << distfinal << "m" << endl;
+
+                            break;
+                        }
+                    }
+
+                }
+                else if (option2 == 2){
+                    int option3;
+                    while (true){
+                        menuSeparator();
+                        cout << endl;
+                        cout << "Graph 1                                                          [1]" <<
+                             endl;
+                        cout << "Graph 2                                                          [2]" <<
+                             endl;
+                        cout << "Graph 3                                                          [3]" <<
+                             endl;
+
+                        cout << endl << "Choose a file: ";
+                        cin >> option3;
+                        cout << endl;
+
+
+                        if (option3 == 1){
+                            string file_e = "../Data/Real-world Graphs/graph1/edges.csv";
+                            string file_n = "../Data/Real-world Graphs/graph1/nodes.csv";
+
+                            graph->populateGraph_nodes(*graph, file_n);
+                            graph->populateGraph_edges(*graph, file_e);
+
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix(true);
+
+                            double distfinal = 0;
+
+                            vector<int> final = graph->tspTriangularApproximation(aux, distfinal);
+
+                            for(int a : final){
+                                cout << a << " - ";
+                            }
+                            cout << endl;
+
+                            cout << "Dist: " << distfinal << "m" << endl;
+
+                            break;
+                        }
+
+                        else if (option3 == 2){
+                            string file_e = "../Data/Real-world Graphs/graph2/edges.csv";
+                            string file_n = "../Data/Real-world Graphs/graph2/nodes.csv";
+
+                            graph->populateGraph_nodes(*graph, file_n);
+                            graph->populateGraph_edges(*graph, file_e);
+
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix();
+
+                            double distfinal = 0;
+
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal);
+
+                            for(auto a : final){
+                                cout << a << " - ";
+                            }
+                            cout << endl;
+
+                            cout << "Dist: " << distfinal << "km" << endl;
+
+                            break;
+                        }
+                        else if (option3 == 3){
+                            string file_e = "../Data/Real-world Graphs/graph3/edges.csv";
+                            string file_n = "../Data/Real-world Graphs/graph3/nodes.csv";
+
+                            graph->populateGraph_nodes(*graph, file_n);
+                            graph->populateGraph_edges(*graph, file_e);
+
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix();
+
+                            double distfinal = 0;
+
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal);
+
+                            for(auto a : final){
+                                cout << a << " - ";
+                            }
+                            cout << endl;
+
+                            cout << "Dist: " << distfinal << "km" << endl;
+
+                            break;
+                        }
+                    }
+
+                }
+
+                else if (option2 == 3){
+                    int option3;
+                    while (true){
+                        menuSeparator();
+                        cout << endl;
+                        cout << "Edges 25                                                         [1]" <<
+                             endl;
+                        cout << "Edges 50                                                         [2]" <<
+                             endl;
+                        cout << "Edges 75                                                         [3]" <<
+                             endl;
+
+                        cout << endl << "Choose a file: ";
+                        cin >> option3;
+                        cout << endl;
+
+
+                        if (option3 == 1){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_25.csv";
+
+                            //chamar funcao
+
+                            break;
+                        }
+
+                        else if (option3 == 2){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_50.csv";
+
+                            //chamar funcao
+
+                            break;
+                        }
+                        else if (option3 == 3){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_100.csv";
+
+                            //chamar funcao
+
+                            break;
+                        }
+
+                    }
+
+                }
+
+                break;
+
+
             }
-            cout << endl;
-
-            cout << "Dist: " << distfinal << "m" << endl;
-
-
-        } else if (option == 5) {
-            /*
-            string file = "../Data/Toy-Graphs/tourism.csv";
-            graph->populateGraph_edges(*graph, file);
-            int n = Graph::countNodes(file);
-            */
-            string file_e = "../Data/Real-world Graphs/graph1/edges.csv";
-            string file_n = "../Data/Real-world Graphs/graph1/nodes.csv";
-
-            graph->populateGraph_nodes(*graph, file_n);
-            graph->populateGraph_edges(*graph, file_e);
-
-            vector<int> caminho = graph->tspHeuristic(*graph);
-
-            for(auto a : caminho){
-                cout << a << " - ";
-            }
-            cout << endl;
-
-
-
-        } else if (option == 6) {
-            
-            
-
-
-        } else if (option == 7) {
-            
-            
-
-
-        } else if (option == 8) {
-            
-            
-
         }
     }
 
