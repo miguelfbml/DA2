@@ -321,3 +321,165 @@ std::vector<int> Graph::tspTriangularApproximation(vector<vector<double>> aux, d
     tour.push_back(0);  // Complete the cycle by adding the starting node to the end
     return tour;
 }
+
+
+std::vector<int> Graph::findMinimumWeightPerfectMatching(Graph& graph, const std::vector<int>& oddDegreeNodes) {
+    std::vector<int> matching;
+    // Replace with the implementation to find a minimum-weight perfect matching
+    // among the odd-degree nodes in the graph
+    return matching;
+}
+
+std::vector<int> Graph::createEulerianCircuit(Graph& graph) {
+    std::vector<int> eulerianCircuit;
+    // Replace with the implementation to create an Eulerian circuit in the graph
+    return eulerianCircuit;
+}
+
+
+std::vector<int> Graph::findMinimumWeightPerfectMatching(Graph& graph, const std::vector<int>& oddDegreeNodes) {
+    std::vector<int> matching;
+
+    // Create a set to track matched nodes
+    std::unordered_set<int> matchedNodes;
+
+    // Iterate over each odd-degree node and find the minimum-weight edge
+    // connecting it to an unmatched node
+    for (int node : oddDegreeNodes) {
+        double minWeight = std::numeric_limits<double>::max();
+        int minNeighbor = -1;
+
+        for (int neighbor : graph.getNeighbors(node)) {
+            if (matchedNodes.find(neighbor) == matchedNodes.end()) {
+                double weight = graph.calculateDistance(node, neighbor);
+                if (weight < minWeight) {
+                    minWeight = weight;
+                    minNeighbor = neighbor;
+                }
+            }
+        }
+
+        if (minNeighbor != -1) {
+            matching.push_back(node);
+            matching.push_back(minNeighbor);
+            matchedNodes.insert(node);
+            matchedNodes.insert(minNeighbor);
+        }
+    }
+
+    return matching;
+}
+
+std::vector<int> Graph::createEulerianCircuit(Graph& graph) {
+    std::vector<int> eulerianCircuit;
+
+    // Create a copy of the graph's adjacency matrix
+    std::vector<std::vector<int>> adjacencyMatrix = graph.createAdjacencyMatrix();
+
+    // Start with an arbitrary node and perform a depth-first search (DFS)
+    // to construct the Eulerian circuit
+    int startNode = graph.getNodes()[0];
+    dfsEulerianCircuit(adjacencyMatrix, startNode, eulerianCircuit);
+
+    return eulerianCircuit;
+}
+
+void Graph::dfsEulerianCircuit(std::vector<std::vector<int>>& adjacencyMatrix, int node, std::vector<int>& eulerianCircuit) {
+    for (int neighbor = 0; neighbor < adjacencyMatrix.size(); ++neighbor) {
+        while (adjacencyMatrix[node][neighbor] > 0) {
+            adjacencyMatrix[node][neighbor]--;
+            adjacencyMatrix[neighbor][node]--;
+            dfsEulerianCircuit(adjacencyMatrix, neighbor, eulerianCircuit);
+        }
+    }
+    eulerianCircuit.push_back(node);
+}
+
+void Graph::createMinimumSpanningTree(Graph& graph, Graph& mst) {
+    std::vector<bool> visited(graph.getNumNodes(), false);  // Track visited nodes
+    std::vector<int> parent(graph.getNumNodes(), -1);  // Store the parent of each node in the MST
+    std::vector<double> key(graph.getNumNodes(), std::numeric_limits<double>::max());  // Key values used to pick the minimum weight edge
+
+    // Start with an arbitrary node
+    int startNode = graph.getNodes()[0];
+    key[startNode] = 0.0;
+
+    for (int i = 0; i < graph.getNumNodes() - 1; ++i) {
+        int u = getMinimumKeyIndex(graph, visited, key);
+        visited[u] = true;
+
+        for (int v : graph.getNeighbors(u)) {
+            double weight = graph.calculateDistance(u, v);
+            if (!visited[v] && weight < key[v]) {
+                parent[v] = u;
+                key[v] = weight;
+            }
+        }
+    }
+
+    // Add edges to the MST
+    for (int i = 0; i < graph.getNumNodes(); ++i) {
+        if (parent[i] != -1) {
+            mst.addEdge(parent[i], i, graph.calculateDistance(parent[i], i));
+        }
+    }
+}
+
+int Graph::getMinimumKeyIndex(const Graph& graph, const std::vector<bool>& visited, const std::vector<double>& key) {
+    double minKey = std::numeric_limits<double>::max();
+    int minIndex = -1;
+
+    for (int i = 0; i < graph.getNumNodes(); ++i) {
+        if (!visited[i] && key[i] < minKey) {
+            minKey = key[i];
+            minIndex = i;
+        }
+    }
+
+    return minIndex;
+}
+
+void Graph::combineEdges(Graph& mst, const std::vector<int>& matching) {
+    for (int i = 0; i < matching.size(); i += 2) {
+        int origin = matching[i];
+        int destination = matching[i + 1];
+        double distance = mst.calculateDistance(origin, destination);
+        mst.addEdge(origin, destination, distance);
+    }
+}
+
+std::vector<int> Graph::tspHeuristic(Graph& graph) {
+    std::vector<int> tspPath;
+
+    // Step 1: Create a minimum spanning tree T of G
+    Graph mst;
+    createMinimumSpanningTree(graph, mst);
+
+    // Step 2: Identify the set O of vertices with odd degrees in T
+    std::vector<int> oddDegreeNodes;
+    for (int nodeId : mst.getNodes()) {
+        if (mst.getNeighbors(nodeId).size() % 2 != 0) {
+            oddDegreeNodes.push_back(nodeId);
+        }
+    }
+
+    // Step 3: Find a minimum-weight perfect matching M in the induced subgraph given by the vertices from O
+    std::vector<int> matching = findMinimumWeightPerfectMatching(graph, oddDegreeNodes);
+
+    // Step 4: Combine the edges of M and T to form a connected multigraph H in which each vertex has even degree
+    combineEdges(mst, matching);
+
+    // Step 5: Form an Eulerian circuit in H
+    std::vector<int> eulerianCircuit = createEulerianCircuit(mst);
+
+    // Step 6: Make the circuit found in the previous step into a Hamiltonian circuit by skipping repeated vertices
+    std::unordered_set<int> visited;
+    for (int nodeId : eulerianCircuit) {
+        if (visited.find(nodeId) == visited.end()) {
+            tspPath.push_back(nodeId);
+            visited.insert(nodeId);
+        }
+    }
+
+    return tspPath;
+}

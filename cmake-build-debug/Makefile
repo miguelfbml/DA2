@@ -129,29 +129,245 @@ DA2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/build
 .PHONY : DA2/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
+DataStructures/Graf.o: DataStructures/Graf.cpp.o
+.PHONY : DataStructures/Graf.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/main.cpp.o
-.PHONY : main.cpp.o
+DataStructures/Graf.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/Graf.cpp.o
+.PHONY : DataStructures/Graf.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+DataStructures/Graf.i: DataStructures/Graf.cpp.i
+.PHONY : DataStructures/Graf.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/main.cpp.i
-.PHONY : main.cpp.i
+DataStructures/Graf.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/Graf.cpp.i
+.PHONY : DataStructures/Graf.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+DataStructures/Graf.s: DataStructures/Graf.cpp.s
+.PHONY : DataStructures/Graf.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/main.cpp.s
-.PHONY : main.cpp.s
+DataStructures/Graf.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/Graf.cpp.s
+.PHONY : DataStructures/Graf.cpp.s
+
+DataStructures/Graph.o: DataStructures/Graph.cpp.o
+.PHONY : DataStructures/Graph.o
+
+# target to build an object file
+DataStructures/Graph.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/Graph.cpp.o
+.PHONY : DataStructures/Graph.cpp.o
+
+DataStructures/Graph.i: DataStructures/Graph.cpp.i
+.PHONY : DataStructures/Graph.i
+
+# target to preprocess a source file
+DataStructures/Graph.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/Graph.cpp.i
+.PHONY : DataStructures/Graph.cpp.i
+
+DataStructures/Graph.s: DataStructures/Graph.cpp.s
+.PHONY : DataStructures/Graph.s
+
+# target to generate assembly for a file
+DataStructures/Graph.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/Graph.cpp.s
+.PHONY : DataStructures/Graph.cpp.s
+
+DataStructures/Heap.o: DataStructures/Heap.cpp.o
+.PHONY : DataStructures/Heap.o
+
+# target to build an object file
+DataStructures/Heap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/Heap.cpp.o
+.PHONY : DataStructures/Heap.cpp.o
+
+DataStructures/Heap.i: DataStructures/Heap.cpp.i
+.PHONY : DataStructures/Heap.i
+
+# target to preprocess a source file
+DataStructures/Heap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/Heap.cpp.i
+.PHONY : DataStructures/Heap.cpp.i
+
+DataStructures/Heap.s: DataStructures/Heap.cpp.s
+.PHONY : DataStructures/Heap.s
+
+# target to generate assembly for a file
+DataStructures/Heap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/Heap.cpp.s
+.PHONY : DataStructures/Heap.cpp.s
+
+DataStructures/TSP.o: DataStructures/TSP.cpp.o
+.PHONY : DataStructures/TSP.o
+
+# target to build an object file
+DataStructures/TSP.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/TSP.cpp.o
+.PHONY : DataStructures/TSP.cpp.o
+
+DataStructures/TSP.i: DataStructures/TSP.cpp.i
+.PHONY : DataStructures/TSP.i
+
+# target to preprocess a source file
+DataStructures/TSP.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/TSP.cpp.i
+.PHONY : DataStructures/TSP.cpp.i
+
+DataStructures/TSP.s: DataStructures/TSP.cpp.s
+.PHONY : DataStructures/TSP.s
+
+# target to generate assembly for a file
+DataStructures/TSP.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/TSP.cpp.s
+.PHONY : DataStructures/TSP.cpp.s
+
+DataStructures/UFDS.o: DataStructures/UFDS.cpp.o
+.PHONY : DataStructures/UFDS.o
+
+# target to build an object file
+DataStructures/UFDS.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/UFDS.cpp.o
+.PHONY : DataStructures/UFDS.cpp.o
+
+DataStructures/UFDS.i: DataStructures/UFDS.cpp.i
+.PHONY : DataStructures/UFDS.i
+
+# target to preprocess a source file
+DataStructures/UFDS.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/UFDS.cpp.i
+.PHONY : DataStructures/UFDS.cpp.i
+
+DataStructures/UFDS.s: DataStructures/UFDS.cpp.s
+.PHONY : DataStructures/UFDS.s
+
+# target to generate assembly for a file
+DataStructures/UFDS.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/UFDS.cpp.s
+.PHONY : DataStructures/UFDS.cpp.s
+
+DataStructures/VertexEdge.o: DataStructures/VertexEdge.cpp.o
+.PHONY : DataStructures/VertexEdge.o
+
+# target to build an object file
+DataStructures/VertexEdge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/VertexEdge.cpp.o
+.PHONY : DataStructures/VertexEdge.cpp.o
+
+DataStructures/VertexEdge.i: DataStructures/VertexEdge.cpp.i
+.PHONY : DataStructures/VertexEdge.i
+
+# target to preprocess a source file
+DataStructures/VertexEdge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/VertexEdge.cpp.i
+.PHONY : DataStructures/VertexEdge.cpp.i
+
+DataStructures/VertexEdge.s: DataStructures/VertexEdge.cpp.s
+.PHONY : DataStructures/VertexEdge.s
+
+# target to generate assembly for a file
+DataStructures/VertexEdge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/DataStructures/VertexEdge.cpp.s
+.PHONY : DataStructures/VertexEdge.cpp.s
+
+src/Menu.o: src/Menu.cpp.o
+.PHONY : src/Menu.o
+
+# target to build an object file
+src/Menu.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/Menu.cpp.o
+.PHONY : src/Menu.cpp.o
+
+src/Menu.i: src/Menu.cpp.i
+.PHONY : src/Menu.i
+
+# target to preprocess a source file
+src/Menu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/Menu.cpp.i
+.PHONY : src/Menu.cpp.i
+
+src/Menu.s: src/Menu.cpp.s
+.PHONY : src/Menu.s
+
+# target to generate assembly for a file
+src/Menu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/Menu.cpp.s
+.PHONY : src/Menu.cpp.s
+
+src/Readfiles.o: src/Readfiles.cpp.o
+.PHONY : src/Readfiles.o
+
+# target to build an object file
+src/Readfiles.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/Readfiles.cpp.o
+.PHONY : src/Readfiles.cpp.o
+
+src/Readfiles.i: src/Readfiles.cpp.i
+.PHONY : src/Readfiles.i
+
+# target to preprocess a source file
+src/Readfiles.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/Readfiles.cpp.i
+.PHONY : src/Readfiles.cpp.i
+
+src/Readfiles.s: src/Readfiles.cpp.s
+.PHONY : src/Readfiles.s
+
+# target to generate assembly for a file
+src/Readfiles.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/Readfiles.cpp.s
+.PHONY : src/Readfiles.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
+src/tsp.o: src/tsp.cpp.o
+.PHONY : src/tsp.o
+
+# target to build an object file
+src/tsp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/tsp.cpp.o
+.PHONY : src/tsp.cpp.o
+
+src/tsp.i: src/tsp.cpp.i
+.PHONY : src/tsp.i
+
+# target to preprocess a source file
+src/tsp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/tsp.cpp.i
+.PHONY : src/tsp.cpp.i
+
+src/tsp.s: src/tsp.cpp.s
+.PHONY : src/tsp.s
+
+# target to generate assembly for a file
+src/tsp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DA2.dir/build.make CMakeFiles/DA2.dir/src/tsp.cpp.s
+.PHONY : src/tsp.cpp.s
 
 # Help Target
 help:
@@ -162,9 +378,36 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... DA2"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... DataStructures/Graf.o"
+	@echo "... DataStructures/Graf.i"
+	@echo "... DataStructures/Graf.s"
+	@echo "... DataStructures/Graph.o"
+	@echo "... DataStructures/Graph.i"
+	@echo "... DataStructures/Graph.s"
+	@echo "... DataStructures/Heap.o"
+	@echo "... DataStructures/Heap.i"
+	@echo "... DataStructures/Heap.s"
+	@echo "... DataStructures/TSP.o"
+	@echo "... DataStructures/TSP.i"
+	@echo "... DataStructures/TSP.s"
+	@echo "... DataStructures/UFDS.o"
+	@echo "... DataStructures/UFDS.i"
+	@echo "... DataStructures/UFDS.s"
+	@echo "... DataStructures/VertexEdge.o"
+	@echo "... DataStructures/VertexEdge.i"
+	@echo "... DataStructures/VertexEdge.s"
+	@echo "... src/Menu.o"
+	@echo "... src/Menu.i"
+	@echo "... src/Menu.s"
+	@echo "... src/Readfiles.o"
+	@echo "... src/Readfiles.i"
+	@echo "... src/Readfiles.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/tsp.o"
+	@echo "... src/tsp.i"
+	@echo "... src/tsp.s"
 .PHONY : help
 
 

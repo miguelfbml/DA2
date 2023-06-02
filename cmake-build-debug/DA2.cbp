@@ -24,6 +24,8 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures"/>
+					<Add directory="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/src"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include"/>
@@ -45,6 +47,8 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures"/>
+					<Add directory="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/src"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include"/>
@@ -80,7 +84,64 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/main.cpp">
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/Graf.cpp">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/Graf.h">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/Graph.cpp">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/Graph.h">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/Heap.cpp">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/Heap.h">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/MutablePriorityQueue.h">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/TSP.cpp">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/TSP.h">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/UFDS.cpp">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/UFDS.h">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/VertexEdge.cpp">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/DataStructures/VertexEdge.h">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/src/Menu.cpp">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/src/Menu.h">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/src/Readfiles.cpp">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/src/Readfiles.h">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/src/main.cpp">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/src/tsp.cpp">
+			<Option target="DA2"/>
+		</Unit>
+		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/src/tsp.h">
 			<Option target="DA2"/>
 		</Unit>
 		<Unit filename="/Users/nunosilva/Desktop/FEUP/2 ANO/2 Semestre/DA/DA2/CMakeLists.txt">

@@ -49,7 +49,23 @@ public:
 
     int getNumEdges() const;
 
+    std::vector<int> findMinimumWeightPerfectMatching(Graph& graph, const std::vector<int>& oddDegreeNodes);
 
+    std::vector<int> createEulerianCircuit(Graph& graph);
+
+    std::vector<int> findMinimumWeightPerfectMatching(Graph& graph, const std::vector<int>& oddDegreeNodes);
+
+    std::vector<int> createEulerianCircuit(Graph& graph);
+
+    void dfsEulerianCircuit(std::vector<std::vector<int>>& adjacencyMatrix, int node, std::vector<int>& eulerianCircuit);
+
+    void createMinimumSpanningTree(Graph& graph, Graph& mst);
+
+    void combineEdges(Graph& mst, const std::vector<int>& matching);
+
+    int getMinimumKeyIndex(const Graph& graph, const std::vector<bool>& visited, const std::vector<double>& key);
+
+    std::vector<int> tspHeuristic(Graph& graph);
 private:
     struct Edge {
         int origin;
