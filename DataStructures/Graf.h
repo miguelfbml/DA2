@@ -53,11 +53,7 @@ public:
 
     std::vector<int> createEulerianCircuit(Graph& graph);
 
-    std::vector<int> findMinimumWeightPerfectMatching(Graph& graph, const std::vector<int>& oddDegreeNodes);
-
-    std::vector<int> createEulerianCircuit(Graph& graph);
-
-    void dfsEulerianCircuit(std::vector<std::vector<int>>& adjacencyMatrix, int node, std::vector<int>& eulerianCircuit);
+    void dfsEulerianCircuit(std::vector<std::vector<double>>& adjacencyMatrix, int node, std::vector<int>& eulerianCircuit);
 
     void createMinimumSpanningTree(Graph& graph, Graph& mst);
 

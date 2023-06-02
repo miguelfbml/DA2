@@ -39,16 +39,6 @@ void Menu::runMenu() {
              endl;
         cout << "        [3]" <<
              endl;
-        cout << "   [4]" <<
-             endl;
-        cout << "   [5]" <<
-             endl;
-        cout << "        [6]" <<
-             endl;
-        cout << "    [7]" <<
-             endl;
-        cout << "            [8]" <<
-             endl;
 
         cout << "Insert the number correspondent to your option: ";
         cin >> option;
@@ -126,6 +116,7 @@ void Menu::runMenu() {
                     int n = Graph::countNodes(file);
 
                     Graph::populateToyNodes(file, n);
+
 
                 }
 
@@ -260,9 +251,25 @@ void Menu::runMenu() {
 
 
         } else if (option == 5) {
+            /*
+            string file = "../Data/Toy-Graphs/tourism.csv";
+            graph->populateGraph_edges(*graph, file);
+            int n = Graph::countNodes(file);
+            */
+            string file_e = "../Data/Real-world Graphs/graph1/edges.csv";
+            string file_n = "../Data/Real-world Graphs/graph1/nodes.csv";
 
-            
-            
+            graph->populateGraph_nodes(*graph, file_n);
+            graph->populateGraph_edges(*graph, file_e);
+
+            vector<int> caminho = graph->tspHeuristic(*graph);
+
+            for(auto a : caminho){
+                cout << a << " - ";
+            }
+            cout << endl;
+
+
 
         } else if (option == 6) {
             

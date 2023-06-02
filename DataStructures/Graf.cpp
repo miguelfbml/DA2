@@ -322,21 +322,6 @@ std::vector<int> Graph::tspTriangularApproximation(vector<vector<double>> aux, d
     return tour;
 }
 
-
-std::vector<int> Graph::findMinimumWeightPerfectMatching(Graph& graph, const std::vector<int>& oddDegreeNodes) {
-    std::vector<int> matching;
-    // Replace with the implementation to find a minimum-weight perfect matching
-    // among the odd-degree nodes in the graph
-    return matching;
-}
-
-std::vector<int> Graph::createEulerianCircuit(Graph& graph) {
-    std::vector<int> eulerianCircuit;
-    // Replace with the implementation to create an Eulerian circuit in the graph
-    return eulerianCircuit;
-}
-
-
 std::vector<int> Graph::findMinimumWeightPerfectMatching(Graph& graph, const std::vector<int>& oddDegreeNodes) {
     std::vector<int> matching;
 
@@ -374,7 +359,7 @@ std::vector<int> Graph::createEulerianCircuit(Graph& graph) {
     std::vector<int> eulerianCircuit;
 
     // Create a copy of the graph's adjacency matrix
-    std::vector<std::vector<int>> adjacencyMatrix = graph.createAdjacencyMatrix();
+    std::vector<std::vector<double>> adjacencyMatrix = graph.createAdjacencyMatrix(true);
 
     // Start with an arbitrary node and perform a depth-first search (DFS)
     // to construct the Eulerian circuit
@@ -384,7 +369,7 @@ std::vector<int> Graph::createEulerianCircuit(Graph& graph) {
     return eulerianCircuit;
 }
 
-void Graph::dfsEulerianCircuit(std::vector<std::vector<int>>& adjacencyMatrix, int node, std::vector<int>& eulerianCircuit) {
+void Graph::dfsEulerianCircuit(std::vector<std::vector<double>>& adjacencyMatrix, int node, std::vector<int>& eulerianCircuit) {
     for (int neighbor = 0; neighbor < adjacencyMatrix.size(); ++neighbor) {
         while (adjacencyMatrix[node][neighbor] > 0) {
             adjacencyMatrix[node][neighbor]--;
@@ -396,15 +381,15 @@ void Graph::dfsEulerianCircuit(std::vector<std::vector<int>>& adjacencyMatrix, i
 }
 
 void Graph::createMinimumSpanningTree(Graph& graph, Graph& mst) {
-    std::vector<bool> visited(graph.getNumNodes(), false);  // Track visited nodes
+    std::vector<bool> visited(graph.getNumNodes() , false);  // Track visited nodes
     std::vector<int> parent(graph.getNumNodes(), -1);  // Store the parent of each node in the MST
     std::vector<double> key(graph.getNumNodes(), std::numeric_limits<double>::max());  // Key values used to pick the minimum weight edge
 
     // Start with an arbitrary node
-    int startNode = graph.getNodes()[0];
+    int startNode = 0;
     key[startNode] = 0.0;
 
-    for (int i = 0; i < graph.getNumNodes() - 1; ++i) {
+    for (int i = 0; i < graph.getNumNodes()  - 1; ++i) {
         int u = getMinimumKeyIndex(graph, visited, key);
         visited[u] = true;
 
@@ -420,6 +405,7 @@ void Graph::createMinimumSpanningTree(Graph& graph, Graph& mst) {
     // Add edges to the MST
     for (int i = 0; i < graph.getNumNodes(); ++i) {
         if (parent[i] != -1) {
+            mst.addNode(i, nodes[i].longitude, nodes[i].latitude);
             mst.addEdge(parent[i], i, graph.calculateDistance(parent[i], i));
         }
     }
