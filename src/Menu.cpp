@@ -3,8 +3,10 @@
 //
 
 #include <iostream>
+#include <chrono>
 #include "Menu.h"
 #include "Graf.h"
+
 
 
 using namespace std;
@@ -151,7 +153,11 @@ void Menu::runMenu() {
                              endl;
                         cout << "Edges 50                                                         [2]" <<
                              endl;
-                        cout << "Edges 75                                                         [3]" <<
+                        cout << "Edges 100                                                        [3]" <<
+                             endl;
+                        cout << "Edges 500                                                        [4]" <<
+                             endl;
+                        cout << "Edges 900                                                        [5]" <<
                              endl;
 
                         cout << endl << "Choose a file: ";
@@ -176,6 +182,20 @@ void Menu::runMenu() {
                         }
                         else if (option3 == 3){
                             string file = "../Data/Extra_Fully_Connected_Graphs/edges_100.csv";
+                            int n = Graph::countNodes(file);
+
+                            Graph::populateToyNodes(file, n);
+                            break;
+                        }
+                        else if (option3 == 4){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_500.csv";
+                            int n = Graph::countNodes(file);
+
+                            Graph::populateToyNodes(file, n);
+                            break;
+                        }
+                        else if (option3 == 5){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_900.csv";
                             int n = Graph::countNodes(file);
 
                             Graph::populateToyNodes(file, n);
@@ -227,7 +247,21 @@ void Menu::runMenu() {
                         if (option3 == 1){
                             string file = "../Data/Toy-Graphs/shipping.csv";
 
-                            //chamar funcao
+                            vector<vector<double>> adjacencyMatrix;
+
+                            graph->populateMatrix(file, adjacencyMatrix);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            std::vector<int> tour = graph->christofides(adjacencyMatrix);
+
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+                            std::cout << "Approximate TSP tour: ";
+                            graph->printTour(tour, adjacencyMatrix);
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
 
                             break;
                         }
@@ -235,14 +269,43 @@ void Menu::runMenu() {
                         else if (option3 == 2){
                             string file = "../Data/Toy-Graphs/stadiums.csv";
 
-                            //chamar funcao
+                            vector<vector<double>> adjacencyMatrix;
+
+                            graph->populateMatrix(file, adjacencyMatrix);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            std::vector<int> tour = graph->christofides(adjacencyMatrix);
+
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+                            std::cout << "Approximate TSP tour: ";
+                            graph->printTour(tour, adjacencyMatrix);
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
 
                             break;
                         }
                         else if (option3 == 3){
                             string file = "../Data/Toy-Graphs/tourism.csv";
 
-                            //chamar funcao
+                            vector<vector<double>> adjacencyMatrix;
+
+                            graph->populateMatrix(file, adjacencyMatrix);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            std::vector<int> tour = graph->christofides(adjacencyMatrix);
+
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+                            std::cout << "Approximate TSP tour: ";
+                            graph->printTour(tour, adjacencyMatrix);
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
+
 
                             break;
                         }
@@ -273,23 +336,74 @@ void Menu::runMenu() {
                             graph->populateGraph_nodes(*graph, file_n);
                             graph->populateGraph_edges(*graph, file_e);
 
-                            vector<int> caminho = graph->tspHeuristic(*graph);
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix();
 
-                            for(auto a : caminho){
-                                cout << a << " - ";
-                            }
-                            cout << endl;
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            std::vector<int> tour = graph->christofides(aux);
+
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+                            std::cout << "Approximate TSP tour: ";
+                            graph->printTour(tour, aux);
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
+
 
                             break;
                         }
 
                         else if (option3 == 2){
-                            //chamar ficheiro e funcoes
+
+                            string file_e = "../Data/Real-world Graphs/graph2/edges.csv";
+                            string file_n = "../Data/Real-world Graphs/graph2/nodes.csv";
+
+                            graph->populateGraph_nodes(*graph, file_n);
+                            graph->populateGraph_edges(*graph, file_e);
+
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix();
+
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            std::vector<int> tour = graph->christofides(aux);
+
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+                            std::cout << "Approximate TSP tour: ";
+                            graph->printTour(tour, aux);
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
+
 
                             break;
                         }
                         else if (option3 == 3){
-                            //chamar ficheiro e funcoes
+
+                            string file_e = "../Data/Real-world Graphs/graph3/edges.csv";
+                            string file_n = "../Data/Real-world Graphs/graph3/nodes.csv";
+
+                            graph->populateGraph_nodes(*graph, file_n);
+                            graph->populateGraph_edges(*graph, file_e);
+
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix();
+
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            std::vector<int> tour = graph->christofides(aux);
+
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+                            std::cout << "Approximate TSP tour: ";
+                            graph->printTour(tour, aux);
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
+
 
                             break;
                         }
@@ -306,7 +420,11 @@ void Menu::runMenu() {
                              endl;
                         cout << "Edges 50                                                         [2]" <<
                              endl;
-                        cout << "Edges 75                                                         [3]" <<
+                        cout << "Edges 100                                                        [3]" <<
+                             endl;
+                        cout << "Edges 500                                                        [3]" <<
+                             endl;
+                        cout << "Edges 900                                                        [3]" <<
                              endl;
 
                         cout << endl << "Choose a file: ";
@@ -317,7 +435,21 @@ void Menu::runMenu() {
                         if (option3 == 1){
                             string file = "../Data/Extra_Fully_Connected_Graphs/edges_25.csv";
 
-                            //chamar funcao
+                            vector<vector<double>> adjacencyMatrix;
+
+                            graph->populateMatrix(file, adjacencyMatrix);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            std::vector<int> tour = graph->christofides(adjacencyMatrix);
+
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+                            std::cout << "Approximate TSP tour: ";
+                            graph->printTour(tour, adjacencyMatrix);
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
 
                             break;
                         }
@@ -325,14 +457,84 @@ void Menu::runMenu() {
                         else if (option3 == 2){
                             string file = "../Data/Extra_Fully_Connected_Graphs/edges_50.csv";
 
-                            //chamar funcao
+                            vector<vector<double>> adjacencyMatrix;
+
+                            graph->populateMatrix(file, adjacencyMatrix);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            std::vector<int> tour = graph->christofides(adjacencyMatrix);
+
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+                            std::cout << "Approximate TSP tour: ";
+                            graph->printTour(tour, adjacencyMatrix);
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
 
                             break;
                         }
                         else if (option3 == 3){
                             string file = "../Data/Extra_Fully_Connected_Graphs/edges_100.csv";
 
-                            //chamar funcao
+                            vector<vector<double>> adjacencyMatrix;
+
+                            graph->populateMatrix(file, adjacencyMatrix);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            std::vector<int> tour = graph->christofides(adjacencyMatrix);
+
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+                            std::cout << "Approximate TSP tour: ";
+                            graph->printTour(tour, adjacencyMatrix);
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
+
+                            break;
+                        }
+                        else if (option3 == 4){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_500.csv";
+
+                            vector<vector<double>> adjacencyMatrix;
+
+                            graph->populateMatrix(file, adjacencyMatrix);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            std::vector<int> tour = graph->christofides(adjacencyMatrix);
+
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+                            std::cout << "Approximate TSP tour: ";
+                            graph->printTour(tour, adjacencyMatrix);
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
+
+                            break;
+                        }
+                        else if (option3 == 5){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_900.csv";
+
+                            vector<vector<double>> adjacencyMatrix;
+
+                            graph->populateMatrix(file, adjacencyMatrix);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            std::vector<int> tour = graph->christofides(adjacencyMatrix);
+
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+                            std::cout << "Approximate TSP tour: ";
+                            graph->printTour(tour, adjacencyMatrix);
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
 
                             break;
                         }
@@ -384,6 +586,8 @@ void Menu::runMenu() {
                         if (option3 == 1){
                             string file = "../Data/Toy-Graphs/shipping.csv";
 
+                            graph = new Graph();
+
                             graph->populateGraph_edges(*graph, file);
                             int n = Graph::countNodes(file);
                             double distfinal = 0;
@@ -391,12 +595,13 @@ void Menu::runMenu() {
 
                             vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
 
-                            for(auto a : final){
-                                cout << a << " - ";
+                            for (int i = 0; i < n; i++){
+                                if (i == n-1) cout << final[i];
+                                else cout << final[i] << " - ";
                             }
                             cout << endl;
 
-                            cout << "Dist: " << distfinal << "m" << endl;
+                            cout << "Distance: " << distfinal << "m" << endl;
 
                             break;
                         }
@@ -404,39 +609,58 @@ void Menu::runMenu() {
                         else if (option3 == 2){
                             string file = "../Data/Toy-Graphs/stadiums.csv";
 
+                            graph = new Graph();
+
                             graph->populateGraph_edges(*graph, file);
                             int n = Graph::countNodes(file);
                             double distfinal = 0;
                             vector<vector<double>> aux = graph->createAdjacencyMatrix(true, n);
+                            auto start = std::chrono::high_resolution_clock::now();
 
                             vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+                            auto end = std::chrono::high_resolution_clock::now();
 
-                            for(auto a : final){
-                                cout << a << " - ";
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+
+                            for (int i = 0; i < final.size(); i++){
+                                if (i == final.size()-1) cout << final[i];
+                                else cout << final[i] << " - ";
                             }
                             cout << endl;
 
-                            cout << "Dist: " << distfinal << "m" << endl;
+                            cout << "Distance: " << distfinal << endl;
 
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
                             break;
                         }
                         else if (option3 == 3){
                             string file = "../Data/Toy-Graphs/tourism.csv";
 
+                            graph = new Graph();
+
                             graph->populateGraph_edges(*graph, file);
                             int n = Graph::countNodes(file);
                             double distfinal = 0;
                             vector<vector<double>> aux = graph->createAdjacencyMatrix(true, n);
 
-                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+                            auto start = std::chrono::high_resolution_clock::now();
 
-                            for(auto a : final){
-                                cout << a << " - ";
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+
+                            for (int i = 0; i < final.size(); i++){
+                                if (i == final.size()-1) cout << final[i];
+                                else cout << final[i] << " - ";
                             }
                             cout << endl;
 
-                            cout << "Dist: " << distfinal << "m" << endl;
+                            cout << "Distance: " << distfinal << endl;
 
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
                             break;
                         }
                     }
@@ -463,6 +687,8 @@ void Menu::runMenu() {
                             string file_e = "../Data/Real-world Graphs/graph1/edges.csv";
                             string file_n = "../Data/Real-world Graphs/graph1/nodes.csv";
 
+                            graph = new Graph();
+
                             graph->populateGraph_nodes(*graph, file_n);
                             graph->populateGraph_edges(*graph, file_e);
 
@@ -470,14 +696,23 @@ void Menu::runMenu() {
 
                             double distfinal = 0;
 
-                            vector<int> final = graph->tspTriangularApproximation(aux, distfinal);
+                            auto start = std::chrono::high_resolution_clock::now();
 
-                            for(int a : final){
-                                cout << a << " - ";
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, graph->getNumNodes());
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+
+                            for (int i = 0; i < final.size(); i++){
+                                if (i == final.size()-1) cout << final[i];
+                                else cout << final[i] << " - ";
                             }
                             cout << endl;
 
-                            cout << "Dist: " << distfinal << "m" << endl;
+                            cout << "Distance: " << distfinal/1000 << "km" << endl;
+
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
 
                             break;
                         }
@@ -486,6 +721,8 @@ void Menu::runMenu() {
                             string file_e = "../Data/Real-world Graphs/graph2/edges.csv";
                             string file_n = "../Data/Real-world Graphs/graph2/nodes.csv";
 
+                            graph = new Graph();
+
                             graph->populateGraph_nodes(*graph, file_n);
                             graph->populateGraph_edges(*graph, file_e);
 
@@ -493,14 +730,23 @@ void Menu::runMenu() {
 
                             double distfinal = 0;
 
-                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal);
+                            auto start = std::chrono::high_resolution_clock::now();
 
-                            for(auto a : final){
-                                cout << a << " - ";
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, graph->getNumNodes());
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+
+                            for (int i = 0; i < final.size(); i++){
+                                if (i == final.size()-1) cout << final[i];
+                                else cout << final[i] << " - ";
                             }
                             cout << endl;
 
-                            cout << "Dist: " << distfinal << "km" << endl;
+                            cout << "Distance: " << distfinal << "km" << endl;
+
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
 
                             break;
                         }
@@ -508,6 +754,8 @@ void Menu::runMenu() {
                             string file_e = "../Data/Real-world Graphs/graph3/edges.csv";
                             string file_n = "../Data/Real-world Graphs/graph3/nodes.csv";
 
+                            graph = new Graph();
+
                             graph->populateGraph_nodes(*graph, file_n);
                             graph->populateGraph_edges(*graph, file_e);
 
@@ -515,14 +763,23 @@ void Menu::runMenu() {
 
                             double distfinal = 0;
 
-                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal);
+                            auto start = std::chrono::high_resolution_clock::now();
 
-                            for(auto a : final){
-                                cout << a << " - ";
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, graph->getNumNodes());
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+
+                            for (int i = 0; i < final.size(); i++){
+                                if (i == final.size()-1) cout << final[i];
+                                else cout << final[i] << " - ";
                             }
                             cout << endl;
 
-                            cout << "Dist: " << distfinal << "km" << endl;
+                            cout << "Distance: " << distfinal << "km" << endl;
+
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
 
                             break;
                         }
@@ -539,7 +796,11 @@ void Menu::runMenu() {
                              endl;
                         cout << "Edges 50                                                         [2]" <<
                              endl;
-                        cout << "Edges 75                                                         [3]" <<
+                        cout << "Edges 100                                                        [3]" <<
+                             endl;
+                        cout << "Edges 500                                                        [4]" <<
+                             endl;
+                        cout << "Edges 900                                                        [5]" <<
                              endl;
 
                         cout << endl << "Choose a file: ";
@@ -550,7 +811,30 @@ void Menu::runMenu() {
                         if (option3 == 1){
                             string file = "../Data/Extra_Fully_Connected_Graphs/edges_25.csv";
 
-                            //chamar funcao
+                            graph = new Graph();
+
+                            graph->populateGraph_edges(*graph, file);
+                            int n = Graph::countNodes(file);
+                            double distfinal = 0;
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix(true, n);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+
+                            for (int i = 0; i < final.size(); i++){
+                                if (i == final.size()-1) cout << final[i];
+                                else cout << final[i] << " - ";
+                            }
+                            cout << endl;
+
+                            cout << "Distance: " << distfinal << "m" << endl;
+
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
 
                             break;
                         }
@@ -558,14 +842,120 @@ void Menu::runMenu() {
                         else if (option3 == 2){
                             string file = "../Data/Extra_Fully_Connected_Graphs/edges_50.csv";
 
-                            //chamar funcao
+                            graph = new Graph();
+
+                            graph->populateGraph_edges(*graph, file);
+                            int n = Graph::countNodes(file);
+                            double distfinal = 0;
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix(true, n);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+
+                            for (int i = 0; i < final.size(); i++){
+                                if (i == final.size()-1) cout << final[i];
+                                else cout << final[i] << " - ";
+                            }
+                            cout << endl;
+
+                            cout << "Distance: " << distfinal << "m" << endl;
+
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
 
                             break;
                         }
                         else if (option3 == 3){
+
+                            graph = new Graph();
                             string file = "../Data/Extra_Fully_Connected_Graphs/edges_100.csv";
 
-                            //chamar funcao
+                            graph->populateGraph_edges(*graph, file);
+                            int n = Graph::countNodes(file);
+                            double distfinal = 0;
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix(true, n);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+
+                            for (int i = 0; i < final.size(); i++){
+                                if (i == final.size()-1) cout << final[i];
+                                else cout << final[i] << " - ";
+                            }
+                            cout << endl;
+
+                            cout << "Distance: " << distfinal << "m" << endl;
+
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
+
+                            break;
+                        }
+                        else if (option3 == 4){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_500.csv";
+
+                            graph = new Graph();
+
+                            graph->populateGraph_edges(*graph, file);
+                            int n = Graph::countNodes(file);
+                            double distfinal = 0;
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix(true, n);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+
+                            for (int i = 0; i < final.size(); i++){
+                                if (i == final.size()-1) cout << final[i];
+                                else cout << final[i] << " - ";
+                            }
+                            cout << endl;
+
+                            cout << "Distance: " << distfinal << "m" << endl;
+
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
+
+                            break;
+                        }
+                        else if (option3 == 5){
+                            string file = "../Data/Extra_Fully_Connected_Graphs/edges_900.csv";
+
+                            graph = new Graph();
+
+                            graph->populateGraph_edges(*graph, file);
+                            int n = Graph::countNodes(file);
+                            double distfinal = 0;
+                            vector<vector<double>> aux = graph->createAdjacencyMatrix(true, n);
+
+                            auto start = std::chrono::high_resolution_clock::now();
+
+                            vector<int> final = graph->tspTriangularApproximation(aux , distfinal, n);
+                            auto end = std::chrono::high_resolution_clock::now();
+
+                            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+
+                            for (int i = 0; i < final.size(); i++){
+                                if (i == final.size()-1) cout << final[i];
+                                else cout << final[i] << " - ";
+                            }
+                            cout << endl;
+
+                            cout << "Distance: " << distfinal << "m" << endl;
+
+                            cout << "It took " << duration << " milliseconds to complete the algoritm." << endl;
 
                             break;
                         }

@@ -49,13 +49,6 @@ cmake_ninja_workdir = C$:/Users/migue/OneDrive/Desktop/Feup/FEUP/ano2_semestre2/
 
 build cmake_object_order_depends_target_DA2: phony || CMakeFiles/DA2.dir
 
-build CMakeFiles/DA2.dir/DataStructures/Graph.cpp.obj: CXX_COMPILER__DA2_Debug C$:/Users/migue/OneDrive/Desktop/Feup/FEUP/ano2_semestre2/DA/projects/DA2/DataStructures/Graph.cpp || cmake_object_order_depends_target_DA2
-  DEP_FILE = CMakeFiles\DA2.dir\DataStructures\Graph.cpp.obj.d
-  FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/migue/OneDrive/Desktop/Feup/FEUP/ano2_semestre2/DA/projects/DA2/DataStructures -IC:/Users/migue/OneDrive/Desktop/Feup/FEUP/ano2_semestre2/DA/projects/DA2/src
-  OBJECT_DIR = CMakeFiles\DA2.dir
-  OBJECT_FILE_DIR = CMakeFiles\DA2.dir\DataStructures
-
 build CMakeFiles/DA2.dir/DataStructures/Heap.cpp.obj: CXX_COMPILER__DA2_Debug C$:/Users/migue/OneDrive/Desktop/Feup/FEUP/ano2_semestre2/DA/projects/DA2/DataStructures/Heap.cpp || cmake_object_order_depends_target_DA2
   DEP_FILE = CMakeFiles\DA2.dir\DataStructures\Heap.cpp.obj.d
   FLAGS = -g -std=gnu++14
@@ -127,7 +120,7 @@ build CMakeFiles/DA2.dir/DataStructures/TSP.cpp.obj: CXX_COMPILER__DA2_Debug C$:
 #############################################
 # Link the executable DA2.exe
 
-build DA2.exe: CXX_EXECUTABLE_LINKER__DA2_Debug CMakeFiles/DA2.dir/DataStructures/Graph.cpp.obj CMakeFiles/DA2.dir/DataStructures/Heap.cpp.obj CMakeFiles/DA2.dir/DataStructures/UFDS.cpp.obj CMakeFiles/DA2.dir/DataStructures/VertexEdge.cpp.obj CMakeFiles/DA2.dir/src/main.cpp.obj CMakeFiles/DA2.dir/src/Menu.cpp.obj CMakeFiles/DA2.dir/src/Readfiles.cpp.obj CMakeFiles/DA2.dir/src/tsp.cpp.obj CMakeFiles/DA2.dir/DataStructures/Graf.cpp.obj CMakeFiles/DA2.dir/DataStructures/TSP.cpp.obj
+build DA2.exe: CXX_EXECUTABLE_LINKER__DA2_Debug CMakeFiles/DA2.dir/DataStructures/Heap.cpp.obj CMakeFiles/DA2.dir/DataStructures/UFDS.cpp.obj CMakeFiles/DA2.dir/DataStructures/VertexEdge.cpp.obj CMakeFiles/DA2.dir/src/main.cpp.obj CMakeFiles/DA2.dir/src/Menu.cpp.obj CMakeFiles/DA2.dir/src/Readfiles.cpp.obj CMakeFiles/DA2.dir/src/tsp.cpp.obj CMakeFiles/DA2.dir/DataStructures/Graf.cpp.obj CMakeFiles/DA2.dir/DataStructures/TSP.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\DA2.dir

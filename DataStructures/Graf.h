@@ -62,6 +62,29 @@ public:
     int getMinimumKeyIndex(const Graph& graph, const std::vector<bool>& visited, const std::vector<double>& key);
 
     std::vector<int> tspHeuristic(Graph& graph);
+
+
+
+
+    int findMin(std::vector<double>& dist, std::vector<bool>& visited);
+
+    std::vector<std::vector<double>> minimumSpanningTree(const std::vector<std::vector<double>>& adjMatrix);
+
+    void eulerianCircuit(int u, std::vector<std::vector<double>>& graph, std::vector<int>& circuit);
+
+    std::vector<std::pair<int, int>> minimumWeightMatching(const std::vector<std::vector<double>>& adjMatrix);
+
+    std::vector<int> shortcutCircuit(const std::vector<int>& eulerianCircuit);
+
+    double computeTourWeight(const std::vector<int>& tour, const std::vector<std::vector<double>>& adjMatrix);
+
+    std::vector<int> christofides(const std::vector<std::vector<double>>& adjMatrix);
+
+    void printTour(const std::vector<int>& tour, const std::vector<vector<double>>& v);
+
+    void populateMatrix(string filename, vector<vector<double>> &v);
+
+
 private:
     struct Edge {
         int origin;

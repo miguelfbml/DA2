@@ -7,8 +7,8 @@ include_directories(DataStructures)
 include_directories(src)
 
 add_executable(DA2
-        DataStructures/Graph.cpp
-        DataStructures/Graph.h
+        #DataStructures/Graph.cpp
+        #DataStructures/Graph.h
         DataStructures/Heap.cpp
         DataStructures/Heap.h
         DataStructures/MutablePriorityQueue.h
